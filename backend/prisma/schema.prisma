@@ -1,0 +1,149 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  DEVELOPER
+}
+
+enum NotificationType {
+  INFO
+  WARNING
+  ERROR
+  SUCCESS
+}
+
+enum DeploymentStatus {
+  SUCCESS
+  FAILED
+  IN_PROGRESS
+}
+
+model User {
+  id                String              @id @default(uuid())
+  email             String              @unique
+  passwordHash      String
+  firstName         String?
+  lastName          String?
+  role              Role                @default(DEVELOPER)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  activities        Activity[]
+  dockerfiles       SavedDockerfile[]
+  deployments       DeploymentHistory[]
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userEmail String?
+  action    String   // e.g., "CONTAINER_CREATED", "USER_LOGIN"
+  details   String   // JSON or text details
+  createdAt DateTime @default(now())
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  title     String
+  message   String
+  type      NotificationType @default(INFO)
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+}
+
+model SavedDockerfile {
+  id               String   @id @default(uuid())
+  name             String
+  content          String
+  optimizedContent String?
+  optimizations    String?  // JSON string of optimization suggestions
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model DeploymentHistory {
+  id            String           @id @default(uuid())
+  imageTag      String
+  ecrRepository String
+  ecsService    String
+  status        DeploymentStatus @default(IN_PROGRESS)
+  logs          String?
+  userId        String
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime         @default(now())
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Stack {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  yamlContent String
+  status      String   @default("STOPPED") // "DEPLOYING", "RUNNING", "STOPPED", "FAILED"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Registry {
+  id        String   @id @default(uuid())
+  name      String
+  url       String   @unique
+  username  String
+  password  String // Encrypted via AES-256-GCM
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContainerMetric {
+  id          String   @id @default(uuid())
+  containerId String
+  cpu         Float
+  memory      Float
+  networkRx   Float
+  networkTx   Float
+  diskRead    Float
+  diskWrite   Float
+  timestamp   DateTime @default(now())
+
+  @@index([containerId, timestamp])
+}
+
+model AlertRule {
+  id         String   @id @default(uuid())
+  name       String
+  metric     String // "CPU", "MEMORY", "STATUS", "DISK"
+  condition  String // ">", "<", "=="
+  value      Float
+  enabled    Boolean  @default(true)
+  channel    String // "SLACK", "DISCORD", "EMAIL"
+  webhookUrl String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model AlertHistory {
+  id            String   @id @default(uuid())
+  containerId   String
+  containerName String
+  ruleId        String?
+  ruleName      String?
+  message       String
+  status        String // "TRIGGERED" | "RESOLVED"
+  createdAt     DateTime @default(now())
+}
+
