@@ -448,7 +448,7 @@
         </p>
       </div>
 
-      <!-- Boarding Pass Card Form (Right Side) -->
+        <!-- Boarding Pass Card Form (Right Side) -->
       <div class="boarding-card-box flex-1 w-full max-w-md bg-[#0E1524]/60 border border-white/[0.06] rounded-xl p-6 shadow-2xl relative overflow-hidden">
         <!-- Form Header -->
         <div class="form-header flex items-center gap-3 pb-4 border-b border-white/[0.04] mb-6">
@@ -461,14 +461,18 @@
           </div>
         </div>
 
-        <form class="space-y-4 font-mono text-[9.5px]">
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 font-mono text-[9.5px]">
+          <!-- Web3Forms Credentials -->
+          <input type="hidden" name="access_key" value="938c078d-4e41-43ae-b4a8-63a4669e761d">
+          <input type="hidden" name="redirect" value="https://github.com/Shaw0p/Dock0ps">
+
           <div>
             <label class="text-[#64748B] font-bold block mb-1.5">NAME (OPTIONAL)</label>
-            <input type="text" placeholder="Harbor Master" class="form-input">
+            <input type="text" name="name" placeholder="Harbor Master" class="form-input">
           </div>
           <div>
             <label class="text-[#64748B] font-bold block mb-1.5">EMAIL <span class="text-[#EA580C]">*</span></label>
-            <input type="email" placeholder="you@shipyard.dev" required class="form-input">
+            <input type="email" name="email" placeholder="you@shipyard.dev" required class="form-input">
           </div>
           <button type="submit" class="form-submit-btn uppercase font-bold tracking-wider cursor-pointer">
             REQUEST BOARDING PASS
