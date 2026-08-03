@@ -217,6 +217,50 @@ volumes:
   if (tabNginx) tabNginx.addEventListener('click', () => renderTab('nginx'));
   if (tabPostgres) tabPostgres.addEventListener('click', () => renderTab('postgres'));
 
+  // -- Boarding Form Submission Handler --
+  const boardingForm = document.querySelector('.boarding-card-box form');
+  const boardingCardBox = document.querySelector('.boarding-card-box');
+
+  if (boardingForm && boardingCardBox) {
+    boardingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const nameInput = boardingForm.querySelector('input[type="text"]');
+      const emailInput = boardingForm.querySelector('input[type="email"]');
+      const submitBtn = boardingForm.querySelector('.form-submit-btn');
+
+      const nameVal = nameInput.value.trim() || 'Harbor Master';
+      const emailVal = emailInput.value.trim();
+
+      // Set loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch animate-spin"></i> REQUESTING PASS...';
+
+      setTimeout(() => {
+        // Replace form content with success card
+        boardingCardBox.innerHTML = `
+          <!-- Form Header -->
+          <div class="form-header flex items-center gap-3 pb-4 border-b border-white/[0.04] mb-6">
+            <div class="anchor-logo border border-[#059669] text-[#059669] w-9 h-9 flex items-center justify-center rounded bg-[#059669]/5">
+              <i class="fa-solid fa-anchor"></i>
+            </div>
+            <div class="font-mono text-[9px]">
+              <span class="text-white block font-bold uppercase tracking-wider">BOARDING REQUEST</span>
+              <span class="text-[#059669] block mt-0.5">REQUEST GRANTED &bull; ENROLLED</span>
+            </div>
+          </div>
+          <div class="font-mono text-[10px] space-y-3 leading-relaxed py-4 text-center animate-hydraulic">
+            <i class="fa-solid fa-circle-check text-4xl text-[#059669] block mx-auto mb-2 animate-bounce"></i>
+            <h3 class="text-white font-bold text-xs uppercase">Welcome Aboard, ${nameVal}!</h3>
+            <p class="text-[#94A3B8]">
+              Your boarding pass has been issued and stamped on the manifest. We will signal you at <strong class="text-white">${emailVal}</strong> the moment v1.0 leaves the harbor.
+            </p>
+          </div>
+        `;
+      }, 1200);
+    });
+  }
+
   // Copy code command handler
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
