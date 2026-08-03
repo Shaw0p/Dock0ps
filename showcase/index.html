@@ -38,10 +38,10 @@
       </div>
       
       <div class="hidden md:flex items-center gap-8 text-xs font-semibold text-[#94A3B8]">
+        <a href="#preview-gallery" class="hover:text-white transition-colors">Interface Preview</a>
         <a href="#workbench" class="hover:text-white transition-colors">Workbench</a>
         <a href="#features" class="hover:text-white transition-colors">Core Features</a>
         <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
-        <a href="#quickstart" class="hover:text-white transition-colors">Quickstart</a>
       </div>
 
       <div>
@@ -53,7 +53,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="max-w-6xl mx-auto px-6 pt-16 pb-20 space-y-8">
+  <section class="max-w-6xl mx-auto px-6 pt-16 pb-12 space-y-8">
     <div class="space-y-6 max-w-4xl">
       <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#0284C7]/10 border border-[#0284C7]/20 rounded-lg text-[9px] font-mono text-[#0284C7] uppercase font-bold tracking-wider">
         <i class="fa-solid fa-circle text-[6px] text-[#059669] animate-pulse"></i> Direct Socket Communication Established
@@ -69,12 +69,31 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 pt-2">
-        <a href="#quickstart" class="px-5 py-2.5 bg-[#0284C7] hover:bg-[#0369a1] text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2">
-          Get Started <i class="fa-solid fa-arrow-right"></i>
+        <a href="#workbench" class="px-5 py-2.5 bg-[#0284C7] hover:bg-[#0369a1] text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2">
+          Launch Config Workbench <i class="fa-solid fa-play"></i>
         </a>
         <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="px-5 py-2.5 bg-[#1E293B] hover:bg-zinc-800 border border-white/[0.08] text-[#F8FAFC] rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2">
           <i class="fa-brands fa-github text-sm"></i> View Source Code
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGH-TECH PRODUCT PREVIEW GALLERY SECTION -->
+  <section id="preview-gallery" class="max-w-6xl mx-auto px-6 py-12">
+    <div class="border border-white/[0.08] bg-[#1E293B]/20 rounded-2xl overflow-hidden shadow-2xl relative">
+      <div class="px-4 py-3 bg-[#0F172A] border-b border-white/[0.04] flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500/50"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-green-500/50"></span>
+        </div>
+        <span class="text-[9px] font-mono text-[#64748B] tracking-wider uppercase font-bold">Active Node Telemetry Dashboard Preview</span>
+        <div class="w-8"></div>
+      </div>
+      <!-- Generated Image display -->
+      <div class="bg-[#0F172A]/50 relative">
+        <img src="preview.png" alt="DockOps Dashboard Telemetry Preview" class="w-full h-auto object-cover opacity-90 transition-opacity hover:opacity-100 duration-300">
       </div>
     </div>
   </section>
@@ -85,15 +104,15 @@
       <div class="text-[9px] font-mono text-[#64748B] uppercase tracking-widest font-bold">Blueprint workbench</div>
       <h2 class="text-xl sm:text-3xl font-display font-bold text-white uppercase">Interactive Config Sandbox</h2>
       <p class="text-xs text-[#94A3B8] max-w-xl font-medium leading-relaxed">
-        Select a configuration template on the left. Watch how DockOps compiles volumes, links networking ports, and prints daemon logs in real time.
+        Toggle Nginx or Postgres configurations, and trigger deployment actions or system failures. Watch the active networks, port maps, and alerting webhooks process live!
       </p>
     </div>
 
     <!-- Workbench Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 border border-white/[0.06] bg-[#1E293B]/40 rounded-2xl overflow-hidden shadow-xl backdrop-blur-sm">
       
-      <!-- Code Panel (Left 5 Cols) -->
-      <div class="lg:col-span-5 flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.06] min-h-[300px] lg:min-h-[450px]">
+      <!-- Code & Control Panel (Left 5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.06] min-h-[350px] lg:min-h-[450px]">
         <!-- Tabs Header -->
         <div class="flex border-b border-white/[0.04] bg-[#0F172A]/50">
           <button id="tab-btn-nginx" class="px-4 py-3 text-[10px] font-mono font-bold tracking-wider transition-all border-r border-white/[0.04] flex items-center gap-2 cursor-pointer text-[#0284C7] bg-[#1E293B]">
@@ -103,6 +122,17 @@
             <i class="fa-solid fa-database"></i> postgres-compose.yml
           </button>
         </div>
+        
+        <!-- Interactive Controls (Cool Buttons) -->
+        <div class="p-4 bg-[#0F172A]/50 border-b border-white/[0.04] flex flex-wrap gap-2.5 select-none">
+          <button id="btn-deploy-sim" class="px-3.5 py-1.5 bg-[#0284C7] hover:bg-[#0369a1] text-white rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-rocket"></i> Deploy Compose Stack
+          </button>
+          <button id="btn-crash-sim" class="px-3.5 py-1.5 bg-[#EA580C]/20 hover:bg-[#EA580C]/35 border border-[#EA580C]/30 text-[#EA580C] rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation"></i> Inject Container Crash
+          </button>
+        </div>
+
         <!-- Editor Textarea -->
         <div class="flex-1 p-5 font-mono text-[10.5px] leading-relaxed text-[#94A3B8] bg-[#0F172A]/20 select-all overflow-y-auto max-h-[250px] lg:max-h-none">
           <pre id="editor-code" class="h-full w-full outline-none bg-transparent resize-none overflow-hidden"></pre>
@@ -110,7 +140,22 @@
       </div>
 
       <!-- Visual Preview Panel (Right 7 Cols) -->
-      <div class="lg:col-span-7 p-6 flex flex-col justify-between space-y-6 min-h-[450px]">
+      <div class="lg:col-span-7 p-6 flex flex-col justify-between space-y-6 min-h-[480px] relative">
+        
+        <!-- Webhook Alert Notification Popup Mockup -->
+        <div id="webhook-toast" class="absolute top-6 right-6 w-72 bg-[#0F172A] border-2 border-[#EA580C] rounded-xl p-4 shadow-2xl z-20 hidden transition-all duration-300 transform scale-95 opacity-0">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-[#EA580C]/10 border border-[#EA580C]/20 flex items-center justify-center text-[#EA580C] shrink-0">
+              <i class="fa-brands fa-discord text-sm"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-mono text-[#EA580C] uppercase tracking-wider block font-bold">Discord Webhook Alert</span>
+              <p class="text-[10px] text-white font-semibold mt-1" id="webhook-toast-message">Container exited unexpectedly!</p>
+            </div>
+            <button id="webhook-toast-close" class="text-zinc-550 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-[9px]"></i></button>
+          </div>
+        </div>
+
         <!-- Sandbox Status Info -->
         <div class="flex justify-between items-center text-[10px] font-mono pb-3 border-b border-white/[0.03]">
           <div class="flex items-center gap-2">
@@ -121,12 +166,12 @@
         </div>
 
         <!-- Render Diagram Area -->
-        <div class="flex-1 flex flex-col items-center justify-center relative min-h-[200px]" id="sandbox-visual-area">
+        <div class="flex-1 flex flex-col items-center justify-center relative min-h-[220px]" id="sandbox-visual-area">
           
           <!-- Nginx Visualization Layer -->
           <div id="visual-nginx" class="w-full flex flex-col items-center gap-6 py-4">
             <!-- Port Ingress Blinker -->
-            <div class="flex items-center gap-3 bg-[#0F172A] border border-white/[0.08] px-4 py-2.5 rounded-xl font-mono text-[10px] shadow-sm transform transition-all duration-300 hover:scale-105 select-none">
+            <div class="flex items-center gap-3 bg-[#0F172A] border border-white/[0.08] px-4 py-2.5 rounded-xl font-mono text-[10px] shadow-sm transform transition-all duration-300 hover:scale-105 select-none port-indicator">
               <i class="fa-solid fa-globe text-[#0284C7] animate-pulse"></i>
               <span>Host Port <strong class="text-white">8080</strong></span>
               <span class="text-[#64748B]">&rarr;</span>
@@ -134,12 +179,12 @@
             </div>
             
             <!-- Nginx Container Node -->
-            <div class="w-48 p-4 bg-[#0F172A] border-2 border-[#0284C7] rounded-2xl flex flex-col items-center gap-2 shadow-lg transform transition-all duration-500 animate-hydraulic">
+            <div id="nginx-container-box" class="w-48 p-4 bg-[#0F172A] border-2 border-[#0284C7] rounded-2xl flex flex-col items-center gap-2 shadow-lg transform transition-all duration-500">
               <div class="w-8 h-8 bg-[#0284C7]/15 rounded-lg border border-[#0284C7]/20 flex items-center justify-center text-[#0284C7]">
                 <i class="fa-solid fa-cube"></i>
               </div>
               <span class="text-[10px] font-bold text-white uppercase tracking-wider">nginx:alpine</span>
-              <span class="text-[8px] font-mono text-[#059669] bg-[#059669]/10 border border-[#059669]/20 px-1.5 py-0.5 rounded font-bold uppercase">Active</span>
+              <span id="nginx-container-badge" class="text-[8px] font-mono text-[#059669] bg-[#059669]/10 border border-[#059669]/20 px-1.5 py-0.5 rounded font-bold uppercase">Active</span>
             </div>
           </div>
 
@@ -149,12 +194,12 @@
             <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
               
               <!-- Container DB Node -->
-              <div class="w-44 p-4 bg-[#0F172A] border-2 border-[#0284C7] rounded-2xl flex flex-col items-center gap-2 shadow-lg animate-hydraulic">
+              <div id="postgres-container-box" class="w-44 p-4 bg-[#0F172A] border-2 border-[#0284C7] rounded-2xl flex flex-col items-center gap-2 shadow-lg transition-colors duration-500">
                 <div class="w-8 h-8 bg-[#0284C7]/15 rounded-lg border border-[#0284C7]/20 flex items-center justify-center text-[#0284C7]">
                   <i class="fa-solid fa-cube"></i>
                 </div>
                 <span class="text-[10px] font-bold text-white uppercase tracking-wider">postgres:15-alpine</span>
-                <span class="text-[8.5px] font-mono text-[#059669] bg-[#059669]/10 border border-[#059669]/20 px-1.5 py-0.5 rounded font-bold uppercase">Active</span>
+                <span id="postgres-container-badge" class="text-[8.5px] font-mono text-[#059669] bg-[#059669]/10 border border-[#059669]/20 px-1.5 py-0.5 rounded font-bold uppercase">Active</span>
               </div>
 
               <!-- Connecting pipeline (using relative layout) -->
@@ -174,7 +219,7 @@
             </div>
 
             <!-- Ingress Block -->
-            <div class="flex items-center gap-3 bg-[#0F172A] border border-white/[0.08] px-4 py-2.5 rounded-xl font-mono text-[10px] shadow-sm transform transition-all duration-300 hover:scale-105 select-none">
+            <div class="flex items-center gap-3 bg-[#0F172A] border border-white/[0.08] px-4 py-2.5 rounded-xl font-mono text-[10px] shadow-sm transform transition-all duration-300 hover:scale-105 select-none port-indicator">
               <i class="fa-solid fa-link text-[#0284C7]"></i>
               <span>Mapped Host Port <strong class="text-white">5432</strong></span>
             </div>
@@ -205,7 +250,7 @@
       </p>
     </div>
 
-    <!-- Feature 1: Docker Compose Stacks Engine (YAML details) -->
+    <!-- Feature 1: Docker Compose Stacks Engine -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-5 space-y-6">
         <div class="inline-flex items-center gap-1.5 text-[8.5px] font-mono text-[#0284C7] bg-[#0284C7]/10 border border-[#0284C7]/20 px-2 py-0.5 rounded uppercase font-bold tracking-wider">
@@ -242,7 +287,7 @@
       </div>
     </div>
 
-    <!-- Feature 2: Registry Credentials Manager (Security visual) -->
+    <!-- Feature 2: Registry Credentials Manager -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <!-- Visual Display First (Asymmetric) -->
       <div class="lg:col-span-7 lg:order-1 order-2 p-6 bg-[#1E293B]/40 border border-white/[0.06] rounded-2xl space-y-5 font-mono text-[9.5px] text-[#94A3B8] shadow-sm select-none">
@@ -287,7 +332,7 @@
       </div>
     </div>
 
-    <!-- Feature 3: Network Topology (SVG layout) -->
+    <!-- Feature 3: Network Topology -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-5 space-y-6">
         <div class="inline-flex items-center gap-1.5 text-[8.5px] font-mono text-[#0284C7] bg-[#0284C7]/10 border border-[#0284C7]/20 px-2 py-0.5 rounded uppercase font-bold tracking-wider">
@@ -339,7 +384,7 @@
       </div>
     </div>
 
-    <!-- Feature 4: Telemetry & Alert Webhooks (Metrics UI) -->
+    <!-- Feature 4: Telemetry & Alert Webhooks -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <!-- Visual Display First (Asymmetric) -->
       <div class="lg:col-span-7 lg:order-1 order-2 p-6 bg-[#1E293B]/40 border border-white/[0.06] rounded-2xl space-y-4 font-mono text-[9px] text-[#94A3B8] shadow-sm select-none">
