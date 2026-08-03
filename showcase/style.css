@@ -1056,3 +1056,24 @@ code {
   from, to { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* Scrolling Ticker Banner Ribbon */
+.ticker-container {
+  display: flex;
+  width: 100%;
+}
+.ticker-wrapper {
+  display: flex;
+  width: max-content;
+  animation: ticker-slide-anim 35s linear infinite;
+}
+.ticker-slide {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+@keyframes ticker-slide-anim {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
