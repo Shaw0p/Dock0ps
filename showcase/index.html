@@ -24,227 +24,200 @@
   <!-- Grid Blueprint Background -->
   <div class="blueprint-grid"></div>
 
-  <!-- Radial Glow Orbs -->
-  <div class="glow-orb top-left"></div>
-  <div class="glow-orb bottom-right"></div>
-
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo-section">
         <div class="logo-icon">
-          <i class="fa-solid fa-cubes-stacked"></i>
+          <i class="fa-solid fa-cube"></i>
         </div>
-        <span class="logo-text">Dock<span class="accent-text">Ops</span></span>
-        <span class="badge-agentless">Agentless</span>
+        <span class="logo-text">Dock<span class="accent-blue">Ops</span></span>
       </div>
       
       <div class="nav-links">
-        <a href="#workbench">Interactive Sandbox</a>
-        <a href="#features">Console Capabilities</a>
-        <a href="#architecture">Architecture</a>
+        <a href="#features">FEATURES</a>
+        <a href="#architecture">ARCHITECTURE</a>
+        <a href="#quickstart">QUICKSTART</a>
+        <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="github-link">GITHUB</a>
       </div>
 
-      <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="github-button">
-        <i class="fa-brands fa-github"></i> Star on GitHub
+      <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="github-star-button">
+        <i class="fa-solid fa-cat"></i> <span class="star-accent">&#9733;</span> STAR ON GITHUB
       </a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero-section max-w-6xl">
-    <div class="badge-connection">
-      <span class="active-dot"></span> Direct Host communication: Online
-    </div>
-    
-    <h1 class="hero-title uppercase">
-      Orchestrate local Docker nodes <br>
-      with zero middleware layers.
-    </h1>
-    
-    <p class="hero-subtitle">
-      A premium, self-hosted Docker Compose control deck. Connects directly to the daemon socket to validate YAML configs, map network interfaces, and stream telemetry alerts to webhooks without third-party agent containers.
-    </p>
-
-    <div class="cta-buttons">
-      <a href="#workbench" class="btn-primary">
-        Interactive Workbench <i class="fa-solid fa-square-terminal"></i>
-      </a>
-      <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="btn-secondary">
-        <i class="fa-brands fa-github"></i> View Repository
-      </a>
-    </div>
-  </section>
-
-  <!-- Product Screenshot Section -->
-  <section class="max-w-6xl px-6 py-6">
-    <div class="screenshot-window">
-      <div class="window-header">
-        <div class="window-buttons">
-          <span></span>
-          <span></span>
-          <span></span>
+    <div class="hero-content">
+      <!-- Left text area -->
+      <div class="hero-text-area">
+        <div class="milestone-badge">
+          <span class="pulse-dot"></span> MILESTONE 3 &mdash; NOW BOARDING
         </div>
-        <span class="window-title">DockOps Telemetry Monitor Console</span>
+        
+        <h1 class="hero-title uppercase">
+          Agentless Docker <br>Orchestration.
+        </h1>
+        
+        <p class="hero-subtitle">
+          DockOps talks straight to the Docker daemon over its own socket. No agent on the host, no sidecar in the stack, no overhead in the path &mdash; one console for every container you run.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#workbench" class="btn-cyan">
+            GET STARTED <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="btn-outline">
+            VIEW SOURCE
+          </a>
+        </div>
       </div>
-      <img src="preview.png" alt="DockOps Dashboard Telemetry Preview" class="dashboard-preview-img">
+
+      <!-- Right graphics area (Isometric cargo container outline) -->
+      <div class="hero-graphics-area select-none">
+        <svg class="isometric-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Isometric Box Wireframe -->
+          <path d="M200 50 L350 120 L200 190 L50 120 Z" stroke="rgba(2, 132, 199, 0.4)" stroke-width="2" />
+          <path d="M50 120 L50 250 L200 320 L200 190 Z" stroke="rgba(2, 132, 199, 0.4)" stroke-width="2" />
+          <path d="M350 120 L350 250 L200 320 L200 190 Z" stroke="rgba(2, 132, 199, 0.4)" stroke-width="2" />
+          
+          <!-- Inner details / partitions -->
+          <path d="M100 143 L100 273" stroke="rgba(2, 132, 199, 0.15)" stroke-width="1.5" />
+          <path d="M150 166 L150 296" stroke="rgba(2, 132, 199, 0.15)" stroke-width="1.5" />
+          <path d="M250 166 L250 296" stroke="rgba(2, 132, 199, 0.15)" stroke-width="1.5" />
+          <path d="M300 143 L300 273" stroke="rgba(2, 132, 199, 0.15)" stroke-width="1.5" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- System Status Bar -->
+    <div class="status-bar font-mono text-[9.5px]">
+      <div class="status-item">
+        <span class="label">AGENTS</span> <span class="val-blue">&mdash;</span> <span class="val">0 DEPLOYED</span>
+      </div>
+      <div class="status-item">
+        <span class="label">PATH</span> <span class="val-blue">&mdash;</span> <span class="val">/VAR/RUN/DOCKER.SOCK</span>
+      </div>
+      <div class="status-item">
+        <span class="label">OVERHEAD</span> <span class="val-blue">&mdash;</span> <span class="val">~0 MB RESIDENT</span>
+      </div>
     </div>
   </section>
 
   <!-- BLUEPRINT WORKBENCH SIGNATURE ELEMENT -->
-  <section id="workbench" class="max-w-6xl scroll-section">
-    <div class="section-header">
-      <span class="section-tag">Interactive Sandbox</span>
-      <h2 class="section-title uppercase">Blueprint Workbench</h2>
-      <p class="section-desc">
-        Click deploy or inject container failure below. Watch the live YAML configuration, active network connections, and Discord webhook alerts process instantly.
-      </p>
+  <section id="workbench" class="max-w-6xl px-6 py-20 scroll-mt-16">
+    <div class="workbench-header">
+      <div class="section-tag font-mono">01 / BLUEPRINT WORKBENCH</div>
+      <div class="workbench-intro">
+        <h2 class="workbench-title">Read the stack like a <br>ship's blueprint.</h2>
+        <p class="workbench-desc">
+          Compose in, topology out. DockOps renders every service, port mapping, and volume mount as a live schematic &mdash; straight from the daemon, redrawn the moment anything changes.
+        </p>
+      </div>
     </div>
 
-    <!-- Workbench Interface -->
-    <div class="workbench-card">
+    <!-- Sandbox Grid Layout -->
+    <div class="sandbox-layout border border-white/[0.06] bg-[#0E1524]/60 rounded-xl overflow-hidden shadow-2xl">
       
-      <!-- Code Panel (Left) -->
-      <div class="code-panel">
-        <div class="panel-tabs">
-          <button id="tab-btn-nginx" class="tab-button active">
-            <i class="fa-brands fa-square-js"></i> nginx-compose.yml
-          </button>
-          <button id="tab-btn-postgres" class="tab-button">
-            <i class="fa-solid fa-database"></i> postgres-compose.yml
-          </button>
+      <!-- Compose Editor Mockup (Left Column) -->
+      <div class="editor-side">
+        <div class="editor-tabs">
+          <div class="tab-header font-mono">COMPOSE EDITOR</div>
+          <div class="tabs-row">
+            <button id="tab-nginx" class="tab-btn active"><i class="fa-solid fa-code text-[#0284C7]"></i> nginx.compose</button>
+            <button id="tab-postgres" class="tab-btn"><i class="fa-solid fa-code text-[#64748B]"></i> postgres.compose</button>
+          </div>
         </div>
         
-        <!-- Controls Buttons Panel -->
-        <div class="control-panel">
-          <button id="btn-deploy-sim" class="control-btn btn-blue">
-            <i class="fa-solid fa-play"></i> Deploy Compose Stack
-          </button>
-          <button id="btn-crash-sim" class="control-btn btn-orange">
-            <i class="fa-solid fa-burst"></i> Inject Container Crash
-          </button>
+        <!-- Interactive Deploy/Crash Controller Buttons -->
+        <div class="editor-controllers border-b border-white/[0.03] p-3 flex gap-2">
+          <button id="btn-deploy" class="workbench-btn btn-cyan-small"><i class="fa-solid fa-play"></i> Deploy Stack</button>
+          <button id="btn-crash" class="workbench-btn btn-orange-small"><i class="fa-solid fa-burst"></i> Inject Fail</button>
         </div>
 
-        <!-- Editor Pre Code -->
-        <div class="editor-area">
-          <pre id="editor-code"></pre>
+        <!-- Text area code snippet editor -->
+        <div class="editor-body font-mono text-[10.5px]">
+          <pre id="yaml-code-view"></pre>
         </div>
       </div>
 
-      <!-- Preview Panel (Right) -->
-      <div class="preview-panel">
-        <!-- Toast Notification popup -->
-        <div id="webhook-toast" class="webhook-toast">
-          <div class="toast-content">
-            <div class="toast-icon">
-              <i class="fa-brands fa-discord"></i>
-            </div>
-            <div class="toast-text">
-              <span class="toast-header uppercase font-mono">Discord Notification Dispatched</span>
-              <p id="webhook-toast-message" class="toast-body">Container Postgres stopped unexpectedly!</p>
-            </div>
-            <button id="webhook-toast-close" class="toast-close-btn">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
+      <!-- Rendered Topology Diagram (Right Column) -->
+      <div class="topology-side flex flex-col justify-between">
+        
+        <!-- Header -->
+        <div class="topology-header border-b border-white/[0.04] p-4 flex items-center justify-between font-mono text-[9px]">
+          <span class="title-tag"><i class="fa-solid fa-circle-nodes"></i> RENDERED TOPOLOGY</span>
+          <span id="topology-status" class="status-tag live"><span class="dot"></span> LIVE</span>
         </div>
 
-        <div class="preview-header">
-          <div class="status-indicator">
-            <span id="workbench-status-dot" class="status-dot healthy"></span>
-            <span id="workbench-status-text">Stack Deployed</span>
-          </div>
-          <span id="workbench-stack-name" class="font-mono text-[#64748B]">nginx-web</span>
-        </div>
-
-        <!-- Visualization Canvas Sandbox -->
-        <div class="visual-canvas">
+        <!-- Render Diagram Window -->
+        <div class="diagram-canvas flex-grow flex items-center justify-center p-8 min-h-[300px]">
           
-          <!-- Nginx visual layer -->
-          <div id="visual-nginx" class="visual-wrapper">
-            <!-- Port mappings -->
-            <div class="port-map-pill">
-              <i class="fa-solid fa-globe pulse-icon"></i>
-              <span>Host Port <strong class="text-white">8080</strong></span>
-              <span class="arrow-connector">&rarr;</span>
-              <span>Container Port <strong class="text-white">80</strong></span>
+          <!-- Topology Frame -->
+          <div class="host-frame" id="host-frame-box">
+            <div class="frame-header font-mono text-[9px]">
+              <span>DOCKER-HOST</span> &bull; <span>/var/run/docker.sock</span>
+              <span class="host-led"></span>
             </div>
+            
+            <div class="frame-inner flex items-center justify-center gap-12 p-8">
+              
+              <!-- External Ingress Port mapping -->
+              <div id="ingress-port-node" class="ingress-node font-mono text-[10px] transform transition-transform duration-300">
+                <span class="label">HOST PORT</span>
+                <span class="val text-[#EA580C]">:8080</span>
+              </div>
 
-            <!-- Server Node -->
-            <div id="nginx-container-box" class="server-node animate-hydraulic">
-              <div class="node-server-header">
-                <span class="led-indicator active"></span>
-                <span class="node-title font-mono">WEB-SERVER</span>
-              </div>
-              <div class="node-body">
-                <i class="fa-solid fa-server node-icon"></i>
-                <div class="node-details">
-                  <span class="text-white font-bold block text-[10px]">nginx:alpine</span>
-                  <span id="nginx-container-badge" class="badge-status online uppercase font-mono">Active</span>
-                </div>
-              </div>
-              <!-- Cooling Fan Spinner -->
-              <div class="node-footer">
-                <span class="font-mono text-[7px] text-[#64748B]">COOLING FAN:</span>
-                <i class="fa-solid fa-fan spinner-icon active" id="nginx-fan"></i>
-              </div>
-            </div>
-          </div>
+              <!-- Topo Connector Link -->
+              <div class="wire-connector"></div>
 
-          <!-- Postgres visual layer -->
-          <div id="visual-postgres" class="visual-wrapper hidden">
-            <div class="postgres-topo-row">
-              <!-- Container DB Node -->
-              <div id="postgres-container-box" class="server-node animate-hydraulic">
-                <div class="node-server-header">
-                  <span class="led-indicator active"></span>
-                  <span class="node-title font-mono">DB-INSTANCE</span>
-                </div>
-                <div class="node-body">
-                  <i class="fa-solid fa-server node-icon text-[#0284C7]"></i>
-                  <div class="node-details">
-                    <span class="text-white font-bold block text-[10px]">postgres:15-alpine</span>
-                    <span id="postgres-container-badge" class="badge-status online uppercase font-mono">Active</span>
+              <!-- Container Nodes Stack -->
+              <div class="containers-stack flex flex-col gap-6">
+                <!-- Nginx container representation -->
+                <div id="container-node-nginx" class="container-node border border-[#0284C7] active">
+                  <div class="node-header font-mono text-[9px]">
+                    <span class="title">nginx:alpine</span>
+                    <span class="badge online">RUNNING 4d</span>
+                  </div>
+                  <div class="node-body flex items-center gap-2">
+                    <span class="label text-[9px] font-mono">ctr web</span>
+                    <span class="val text-[9px] font-mono text-zinc-550">:80</span>
                   </div>
                 </div>
-                <div class="node-footer">
-                  <span class="font-mono text-[7px] text-[#64748B]">COOLING FAN:</span>
-                  <i class="fa-solid fa-fan spinner-icon active" id="postgres-fan"></i>
+
+                <!-- Postgres container representation -->
+                <div id="container-node-postgres" class="container-node border border-white/[0.08]">
+                  <div class="node-header font-mono text-[9px]">
+                    <span class="title">postgres:16</span>
+                    <span class="badge online">RUNNING 4d</span>
+                  </div>
+                  <div class="node-body flex items-center gap-2">
+                    <span class="label text-[9px] font-mono">ctr db</span>
+                    <span class="val text-[9px] font-mono text-zinc-550">:5432</span>
+                  </div>
                 </div>
               </div>
 
-              <!-- Pipe link -->
-              <div class="pipe-connector">
-                <span class="pipe-label">Volume Link</span>
-                <div class="pipe-line"></div>
+              <!-- Volume Connector Link (dashed) -->
+              <div id="volume-wire" class="wire-connector-dashed hidden"></div>
+
+              <!-- Volume Disk Cylinder -->
+              <div id="volume-node-box" class="volume-cylinder border border-white/[0.08] hidden">
+                <i class="fa-solid fa-database text-[#059669]"></i>
+                <span class="font-mono text-[9px] text-white font-bold block mt-1">pgdata</span>
               </div>
 
-              <!-- Storage Volume Cylinder -->
-              <div class="storage-node">
-                <div class="storage-top"></div>
-                <div class="storage-body">
-                  <i class="fa-solid fa-database storage-icon"></i>
-                  <span class="storage-title font-mono">pg_data</span>
-                  <span class="storage-desc font-mono">/var/lib/mysql</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ingress -->
-            <div class="port-map-pill">
-              <i class="fa-solid fa-link text-[#0284C7]"></i>
-              <span>Mapped Host Connection Port: <strong class="text-white">5432</strong></span>
             </div>
           </div>
 
         </div>
 
-        <!-- Terminal log display -->
-        <div class="terminal-console font-mono">
-          <div class="terminal-header uppercase">
-            <i class="fa-solid fa-terminal"></i> Log Event Stream
-          </div>
-          <div id="sandbox-logs" class="terminal-body scroll-smooth"></div>
+        <!-- Legend Footer -->
+        <div class="topology-legend border-t border-white/[0.04] p-4 flex gap-6 font-mono text-[9px] text-[#64748B]">
+          <div><span class="legend-color-orange">&mdash;</span> PORT MAP</div>
+          <div><span class="legend-color-green">&bull;&bull;&bull;</span> VOLUME</div>
+          <div><span class="legend-color-blue">&mdash;&mdash;</span> NETWORK</div>
         </div>
 
       </div>
@@ -252,175 +225,129 @@
     </div>
   </section>
 
-  <!-- ASYMMETRICAL DETAILED FEATURE PRESENTATIONS -->
-  <section id="features" class="max-w-6xl scroll-section space-y-32 border-t border-white/[0.03] pt-20">
+  <!-- FEATURE MANIFEST SECTION (02 / MILESTONE 3) -->
+  <section id="features" class="max-w-6xl px-6 py-20 border-t border-white/[0.03]">
     
-    <div class="text-center max-w-xl mx-auto space-y-3">
-      <span class="section-tag">Core Features</span>
-      <h2 class="section-title uppercase">Direct Daemon Orchestration</h2>
-      <p class="section-desc">
-        Engineered with TypeScript, Prisma databases, and WebSocket event log streams.
-      </p>
+    <div class="manifest-intro pb-16">
+      <div class="section-tag font-mono">02 / MILESTONE 3 &mdash; FEATURE MANIFEST</div>
+      <h2 class="manifest-title uppercase">Cargo handling for your <br>entire container fleet.</h2>
     </div>
 
-    <!-- Feature 1: Stacks Engine -->
-    <div class="asymmetric-row">
-      <div class="text-column space-y-6">
-        <span class="feature-tag">Orchestration</span>
-        <h3 class="feature-title uppercase">Pre-Flight YAML Validation & Spawning</h3>
-        <p class="feature-desc">
-          DockOps validates Compose YAML configurations locally using the `docker compose config` command before any deployment is initialized. If valid, the backend uses Node.js `spawn` process controls to execute Compose tasks asynchronously. If a build fails, the platform rolls back databases and notifies users immediately.
-        </p>
-        <div class="spec-card">
-          <span class="spec-label">Subprocess Spawning</span>
-          <p class="spec-text">No direct shell concatenation. Arguments are passed as strictly sanitized string arrays directly into the Docker CLI binary to block execution injection vulnerabilities.</p>
+    <!-- Asymmetrical Grid of Milestone 3 features -->
+    <div class="features-grid gap-8">
+      
+      <!-- Feature 1: Compose Stacks Engine -->
+      <div class="feature-card p-6 bg-[#0E1524]/40 border border-white/[0.06] rounded-xl flex flex-col justify-between min-h-[220px]">
+        <div class="space-y-4">
+          <span class="f-num font-mono">F.01</span>
+          <h3 class="f-title uppercase">Compose Stacks Engine</h3>
+          <p class="f-desc">
+            Point DockOps at a compose file and it parses, plans, and launches the whole stack &mdash; dependency-ordered, health-gated, torn down in one click.
+          </p>
+        </div>
+        <!-- Visual graph layout -->
+        <div class="f-visual-row font-mono text-[9px] mt-6 flex items-center gap-2 text-[#94A3B8]">
+          <span class="v-pill border border-[#64748B]/35">compose.yaml</span>
+          <span class="v-arrow">&rarr;</span>
+          <span class="v-pill border border-[#64748B]/35">parser</span>
+          <span class="v-arrow">&rarr;</span>
+          <span class="v-pill border border-[#64748B]/35">plan graph</span>
+          <span class="v-arrow">&rarr;</span>
+          <span class="v-pill border border-[#059669]/35 text-[#059669]">&bull; web</span>
+          <span class="v-pill border border-[#059669]/35 text-[#059669]">&bull; db</span>
+          <span class="v-pill border border-[#059669]/35 text-[#059669]">&bull; cache</span>
         </div>
       </div>
-      <div class="visual-column select-none">
-        <div class="console-box font-mono">
-          <div class="console-header">
-            <span>YAML Deployment Validation Pipeline</span>
-            <span class="text-[#059669]">Config Check Pass</span>
-          </div>
-          <div class="console-body space-y-2">
-            <div class="console-item">
-              <span class="text-[#EA580C] font-bold">1. YAML PARSE</span> &bull; Checks YAML nodes structure
-            </div>
-            <div class="console-item">
-              <span class="text-[#0284C7] font-bold">2. DAEMON CHECK</span> &bull; Spawns `docker compose config`
-            </div>
-            <div class="console-item active">
-              <i class="fa-solid fa-circle-check text-[#059669]"></i>
-              <span>3. DEPLOY INITIATED</span> &bull; Spawns async process: `docker compose up -d`
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Feature 2: Registries -->
-    <div class="asymmetric-row">
-      <div class="visual-column select-none lg:order-1 order-2">
-        <div class="console-box font-mono">
-          <div class="console-header">
-            <i class="fa-solid fa-shield-halved"></i> AES-256-GCM Auth Pipeline
-          </div>
-          <div class="crypto-flow">
-            <div class="crypto-box">
-              <span class="box-label">Database State</span>
-              <span class="box-value truncate">iv:tag:ciphertext</span>
-            </div>
-            <div class="flow-arrow">&rarr; Decrypt &rarr;</div>
-            <div class="crypto-box active">
-              <span class="box-label text-[#EA580C]">In-Memory Token</span>
-              <span class="box-value text-[#EA580C]">Decrypted Secret</span>
-            </div>
-            <div class="flow-arrow">&rarr; Pull &rarr;</div>
-            <div class="crypto-box success">
-              <span class="box-label text-[#059669]">Docker daemon</span>
-              <span class="box-value text-white">Success</span>
-            </div>
-          </div>
+      <!-- Feature 2: Registry Credentials Manager -->
+      <div class="feature-card p-6 bg-[#0E1524]/40 border border-white/[0.06] rounded-xl flex flex-col justify-between min-h-[220px]">
+        <div class="space-y-4">
+          <span class="f-num font-mono">F.02</span>
+          <h3 class="f-title uppercase">Registry Credentials Manager</h3>
+          <p class="f-desc">
+            Private registry logins sealed with AES-256-GCM before they ever touch disk. Keys stay on your host &mdash; nowhere else.
+          </p>
+        </div>
+        <!-- Visual layout -->
+        <div class="f-visual-row font-mono text-[9px] mt-6 flex items-center gap-2">
+          <span class="v-pill border border-white/[0.04] text-zinc-550">registry creds</span>
+          <span class="v-lock-icon border border-[#EA580C] text-[#EA580C] w-7 h-7 flex items-center justify-center rounded"><i class="fa-solid fa-lock"></i></span>
+          <span class="v-pill border border-[#059669]/35 text-[#059669] bg-[#059669]/5">encrypted vault</span>
         </div>
       </div>
-      <div class="text-column lg:order-2 order-1 space-y-6">
-        <span class="feature-tag">Security</span>
-        <h3 class="feature-title uppercase">AES-256-GCM Registry Encryptions</h3>
-        <p class="feature-desc">
-          Secure private image pulling without risk. Credentials for Docker Hub, GHCR, or custom registries are encrypted with authenticated AES-256-GCM algorithms using a 32-byte hash symmetric key from your `.env` configuration. The decrypted credentials never leave backend RAM and are never sent to the client.
-        </p>
-        <div class="spec-card">
-          <span class="spec-label">Automated Integration</span>
-          <p class="spec-text">When you pull an image like `ghcr.io/org/app:latest`, the backend matches the domain prefix against the database, decrypts credentials, and passes authorization objects straight into the daemon pulls.</p>
-        </div>
-      </div>
-    </div>
 
-    <!-- Feature 3: Networks -->
-    <div class="asymmetric-row">
-      <div class="text-column space-y-6">
-        <span class="feature-tag">Visual Network</span>
-        <h3 class="feature-title uppercase">Topological Interface Mapping</h3>
-        <p class="feature-desc">
-          Ditch static tables. The platform queries active networks, gateways, and subnets directly from Docker. The topological visualizer represents the real-time layout showing bridge channels connected to container nodes and their allocated internal IP addresses.
-        </p>
-        <div class="spec-card">
-          <span class="spec-label">Direct Linking</span>
-          <p class="spec-text">Clicking any container node in the visual interface routes the client immediately to that container's details, logs, and interactive consoles.</p>
+      <!-- Feature 3: Network Topology Visualizer -->
+      <div class="feature-card p-6 bg-[#0E1524]/40 border border-white/[0.06] rounded-xl flex flex-col justify-between min-h-[300px] lg:col-span-1">
+        <div class="space-y-4">
+          <span class="f-num font-mono">F.03</span>
+          <h3 class="f-title uppercase">Network Topology Visualizer</h3>
+          <p class="f-desc">
+            Every bridge, overlay, and attached container drawn as a live node graph. See who talks to whom before you prune a thing.
+          </p>
+        </div>
+        <!-- Visual canvas preview -->
+        <div class="h-44 bg-[#090D16]/50 border border-white/[0.03] rounded-lg mt-6 flex items-center justify-center relative font-mono text-[9px] text-[#94A3B8]">
+          <div class="center-bridge w-14 h-14 rounded-full border border-[#0284C7] bg-[#0284C7]/5 flex items-center justify-center text-white font-bold relative z-10">
+            bridge0
+          </div>
+          <!-- Satellite containers -->
+          <div class="sat-node absolute top-4 left-10 border border-[#059669] px-2 py-1 rounded">web <span class="dot-g"></span></div>
+          <div class="sat-node absolute top-4 right-10 border border-[#059669] px-2 py-1 rounded">api <span class="dot-g"></span></div>
+          <div class="sat-node absolute bottom-4 left-10 border border-[#059669] px-2 py-1 rounded">db <span class="dot-g"></span></div>
+          <div class="sat-node absolute bottom-4 right-10 border border-[#059669] px-2 py-1 rounded">worker <span class="dot-g"></span></div>
+          <!-- Connections svg -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none">
+            <line x1="20%" y1="20%" x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="2 2" />
+            <line x1="80%" y1="20%" x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="2 2" />
+            <line x1="20%" y1="80%" x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="2 2" />
+            <line x1="80%" y1="80%" x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="2 2" />
+          </svg>
         </div>
       </div>
-      <div class="visual-column select-none">
-        <div class="console-box font-mono">
-          <div class="console-header">
-            <span>Interface Mapping Preview</span>
-            <span>Docker Bridge: dockops_default</span>
-          </div>
-          <div class="network-mock-canvas">
-            <div class="network-bridge">
-              <span class="bridge-tag">Bridge</span>
-              <span class="bridge-ip">172.20.0.1</span>
-            </div>
-            
-            <div class="node-connection left-side animate-hydraulic">
-              <span class="node-ip-name font-bold">redis-node</span>
-              <span class="node-ip-val">172.20.0.2</span>
-            </div>
-            
-            <div class="node-connection right-side animate-hydraulic">
-              <span class="node-ip-name font-bold">web-server</span>
-              <span class="node-ip-val">172.20.0.3</span>
-            </div>
 
-            <!-- Connector SVG -->
-            <svg class="connection-svg">
-              <line x1="15%" y1="50%" x2="50%" y2="50%" stroke="rgba(2, 132, 199, 0.4)" stroke-dasharray="3 3" stroke-width="1.5" />
-              <line x1="85%" y1="50%" x2="50%" y2="50%" stroke="rgba(2, 132, 199, 0.4)" stroke-dasharray="3 3" stroke-width="1.5" />
+      <!-- Feature 4: Observability & Alert Rules -->
+      <div class="feature-card p-6 bg-[#0E1524]/40 border border-white/[0.06] rounded-xl flex flex-col justify-between min-h-[300px] lg:col-span-1">
+        <div class="space-y-4">
+          <span class="f-num font-mono">F.04</span>
+          <h3 class="f-title uppercase">Observability & Alert Rules</h3>
+          <p class="f-desc">
+            CPU and RAM streamed per container, with threshold rules that fire straight to Slack or Discord webhooks the moment a workload runs hot.
+          </p>
+        </div>
+        <!-- High-fidelity SVG chart mockup + console alerts -->
+        <div class="chart-and-console mt-6 space-y-3 font-mono text-[9px]">
+          <!-- SVG line chart -->
+          <div class="chart-area h-24 bg-[#090D16]/50 border border-white/[0.03] rounded-lg p-2 flex flex-col justify-between relative">
+            <div class="flex gap-4 border-b border-white/[0.02] pb-1 font-bold">
+              <span class="text-[#0284C7] uppercase">CPU</span>
+              <span class="text-[#EA580C] uppercase">RAM</span>
+            </div>
+            <!-- Drawing line pathways -->
+            <svg class="w-full h-16 pointer-events-none">
+              <!-- CPU path -->
+              <path d="M 0 35 Q 30 40 60 25 T 120 45 T 180 15 T 240 30 T 300 10 T 360 20 L 400 25" fill="none" stroke="#0284C7" stroke-width="1.5" />
+              <!-- RAM path -->
+              <path d="M 0 50 Q 30 48 60 52 T 120 46 T 180 50 T 240 55 T 300 48 T 360 50 L 400 52" fill="none" stroke="#EA580C" stroke-width="1.5" />
             </svg>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 4: Telemetry -->
-    <div class="asymmetric-row">
-      <div class="visual-column select-none lg:order-1 order-2">
-        <div class="console-box font-mono">
-          <div class="console-header">
-            <span>Webhook Notification payload</span>
-            <span class="text-[#EA580C]">Warning Alerting Triggered</span>
+          <!-- Tiny black terminal box -->
+          <div class="mini-console p-3 bg-[#090D16] border border-white/[0.04] rounded-lg text-zinc-350 space-y-0.5 leading-relaxed">
+            <p><span class="text-zinc-550">[12:04:11]</span> webhook &rarr; <span class="text-[#0284C7]">#dockops-alerts</span></p>
+            <p class="pl-2">rule: <span class="text-[#EA580C]">cpu &gt; 85% for 2m</span></p>
+            <p class="pl-2">container: api-worker-2</p>
+            <p class="pl-2">status: <span class="text-[#EA580C] font-bold">FIRING</span></p>
           </div>
-          <pre class="payload-pre">
-{
-  "event": "alert_triggered",
-  "rule": "Postgres RAM Exceeded",
-  "container": "dockops-postgres-dev",
-  "metric": "MEMORY",
-  "value": "92.4%",
-  "severity": "CRITICAL",
-  "timestamp": "2026-08-03T13:58:35Z",
-  "webhook_target": "DISCORD"
-}</pre>
         </div>
       </div>
-      <div class="text-column lg:order-2 order-1 space-y-6">
-        <span class="feature-tag">Observability</span>
-        <h3 class="feature-title uppercase">Telemetry & Slack/Discord Rules</h3>
-        <p class="feature-desc">
-          Monitor your containers dynamically. A background daemon polls container resource utilization every 30 seconds, saving logs to PostgreSQL and cleaning old metric data automatically. If CPU or memory values cross user-configured thresholds, or if a container stops unexpectedly, the alerting rules engine dispatches JSON payloads to Discord or Slack webhook URLs.
-        </p>
-        <div class="spec-card">
-          <span class="spec-label">Historical Plotting</span>
-          <p class="spec-text">The metrics collector supports long-term analytics. Data is rendered directly as clean historical charts over the last hour.</p>
-        </div>
-      </div>
-    </div>
 
+    </div>
   </section>
 
-  <!-- ARCHITECTURE -->
-  <section id="architecture" class="max-w-6xl scroll-section grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border-t border-white/[0.03] pt-20">
+  <!-- ARCHITECTURE (03 / SPECIFICATIONS) -->
+  <section id="architecture" class="max-w-6xl px-6 py-20 border-t border-white/[0.03] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-16">
     <div class="space-y-6">
-      <h2 class="section-title uppercase text-left">Daemon Socket Connection</h2>
+      <div class="section-tag font-mono">03 / ARCHITECTURE SPECIFICATION</div>
+      <h2 class="manifest-title uppercase text-left">Daemon Socket Connection</h2>
       <p class="section-desc text-left">
         DockOps connects directly to your local Docker socket via Node.js using the Dockerode SDK. It executes lifecycle requests inside the host system, completely eliminating intermediate layers or third-party daemon interfaces.
       </p>
@@ -434,72 +361,114 @@
     </div>
     
     <div class="console-box font-mono select-none">
-      <div class="console-header">
-        <i class="fa-solid fa-circle-nodes"></i> Connection Handler
+      <div class="console-header border-b border-white/[0.04] p-3 flex justify-between items-center text-[9px] text-[#64748B]">
+        <span><i class="fa-solid fa-circle-nodes"></i> Connection Handler</span>
+        <span>dockerode.init()</span>
       </div>
-      <div class="console-body space-y-3">
-        <div class="console-item p-3">
+      <div class="console-body p-4 space-y-3">
+        <div class="console-item p-3 border border-white/[0.04] rounded bg-[#0E1524]/20 text-[10px]">
           <strong class="text-white block font-sans">Dockerode (Node.js SDK)</strong>
-          <span class="text-[#64748B] block mt-1 text-[10px]">Queries containers list, inspects details metadata, attaches events stream.</span>
+          <span class="text-[#64748B] block mt-1">Queries containers list, inspects details metadata, attaches events stream.</span>
         </div>
-        <div class="console-item p-3">
+        <div class="console-item p-3 border border-white/[0.04] rounded bg-[#0E1524]/20 text-[10px]">
           <strong class="text-white block font-sans">Unix socket socketPath</strong>
-          <span class="text-[#64748B] block mt-1 text-[10px]">//./pipe/docker_engine or /var/run/docker.sock</span>
+          <span class="text-[#64748B] block mt-1 font-mono">//./pipe/docker_engine or /var/run/docker.sock</span>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- QUICKSTART Section (03 / QUICKSTART) -->
+  <section id="quickstart" class="max-w-6xl px-6 py-20 border-t border-white/[0.03] scroll-mt-16">
+    <div class="quickstart-layout flex flex-col lg:flex-row items-center gap-12 justify-between">
+      <div class="quickstart-text-area text-left space-y-6 flex-1">
+        <div class="section-tag font-mono">03 / QUICKSTART</div>
+        <h2 class="manifest-title uppercase">On the dock in <br>sixty seconds.</h2>
+        <p class="section-desc leading-relaxed">
+          One curl, one up. DockOps ships as a single self-hosted binary that mounts the Docker socket read-write and serves the console on port 8420. Nothing else to install, nothing phoning home.
+        </p>
+        <!-- Specs list -->
+        <ul class="quickstart-specs font-mono text-[9px] text-[#64748B] space-y-2 uppercase font-bold">
+          <li><span class="text-[#0284C7] mr-1.5">&#9670;</span> Linux &bull; AMD64 / ARM64</li>
+          <li><span class="text-[#0284C7] mr-1.5">&#9670;</span> Docker Engine &gt; 24.0</li>
+          <li><span class="text-[#0284C7] mr-1.5">&#9670;</span> No Root Daemon Changes</li>
+        </ul>
+      </div>
+
+      <!-- Code Box Terminal (Right Side) -->
+      <div class="code-box flex-1 w-full border border-white/[0.08] shadow-2xl">
+        <div class="code-header flex justify-between items-center border-b border-white/[0.04] p-3 font-mono text-[9px]">
+          <span class="text-zinc-550"><i class="fa-solid fa-square-terminal"></i> DOCK@HOST &mdash; SH</span>
+          <button id="copy-btn" class="copy-btn flex items-center gap-1 hover:text-white cursor-pointer font-bold"><i class="fa-solid fa-copy"></i> COPY</button>
+        </div>
+        <div class="code-body font-mono text-[10.5px] p-5 space-y-1 select-all bg-[#090D16]/50">
+          <p><span class="text-zinc-550">$</span> curl -fsSL https://get.dockops.dev | sh</p>
+          <p class="text-zinc-550">&nbsp;&nbsp;pulling dockops:latest ... done (11.2 MB)</p>
+          <p><span class="text-zinc-550">$</span> dockops up -d</p>
+          <p class="text-[#059669]">&nbsp;&nbsp;console live &rarr; http://localhost:8420</p>
+          <p><span class="text-zinc-550">$</span> <span class="cursor-blinker">_</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUICKSTART -->
-  <section id="quickstart" class="max-w-6xl scroll-section text-center space-y-12 border-t border-white/[0.03] pt-20">
-    <div class="space-y-3 max-w-xl mx-auto">
-      <h2 class="section-title uppercase">Initialize DockOps</h2>
-      <p class="section-desc">
-        Follow these steps to pull, configure database schema, and spin up DockOps locally.
-      </p>
-    </div>
-
-    <!-- Code Block -->
-    <div class="code-box max-w-xl mx-auto shadow-lg">
-      <div class="code-header">
-        <span class="font-mono text-[#64748B] uppercase font-bold tracking-widest text-[9px] flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 bg-[#0284C7] rounded-full"></span> Bash command line
-        </span>
-        <button id="copy-btn" class="copy-btn cursor-pointer" title="Copy code">
-          <i class="fa-solid fa-copy"></i>
-        </button>
+  <!-- BOARDING PASS MANIFEST FORM SECTION -->
+  <section class="max-w-6xl px-6 py-20 border-t border-white/[0.03]">
+    <div class="boarding-layout flex flex-col lg:flex-row items-center gap-12 justify-between">
+      <div class="boarding-text text-left space-y-4 flex-1">
+        <h2 class="manifest-title uppercase">Get stamped on the <br>v1.0 manifest.</h2>
+        <p class="section-desc leading-relaxed max-w-sm">
+          Release candidates, changelog drops, and nothing else. One signal when v1.0 leaves the harbor &mdash; no newsletter sludge in between.
+        </p>
       </div>
-      <div class="code-body font-mono text-[10.5px] leading-relaxed text-[#94A3B8]">
-<pre id="code-snippet">
-# Clone the repository
-git clone https://github.com/shaw0p/Dock0ps.git
-cd Dock0ps
 
-# Spin up Postgres development database container
-docker compose -f docker-compose.dev.yml up -d
+      <!-- Boarding Pass Card Form (Right Side) -->
+      <div class="boarding-card-box flex-1 w-full max-w-md bg-[#0E1524]/60 border border-white/[0.06] rounded-xl p-6 shadow-2xl relative overflow-hidden">
+        <!-- Form Header -->
+        <div class="form-header flex items-center gap-3 pb-4 border-b border-white/[0.04] mb-6">
+          <div class="anchor-logo border border-[#EA580C] text-[#EA580C] w-9 h-9 flex items-center justify-center rounded bg-[#EA580C]/5">
+            <i class="fa-solid fa-anchor"></i>
+          </div>
+          <div class="font-mono text-[9px]">
+            <span class="text-white block font-bold uppercase tracking-wider">BOARDING REQUEST</span>
+            <span class="text-[#64748B] block mt-0.5">FORM DOCK-88 &bull; V1.0 RELEASE</span>
+          </div>
+        </div>
 
-# Install backend packages and run migrations
-cd backend
-npm install
-npx prisma generate
-npx prisma migrate dev --name init_milestone3
-
-# Run backend dev server (starts on port 4000)
-npm run dev
-</pre>
+        <form class="space-y-4 font-mono text-[9.5px]">
+          <div>
+            <label class="text-[#64748B] font-bold block mb-1.5">NAME (OPTIONAL)</label>
+            <input type="text" placeholder="Harbor Master" class="form-input">
+          </div>
+          <div>
+            <label class="text-[#64748B] font-bold block mb-1.5">EMAIL <span class="text-[#EA580C]">*</span></label>
+            <input type="email" placeholder="you@shipyard.dev" required class="form-input">
+          </div>
+          <button type="submit" class="form-submit-btn uppercase font-bold tracking-wider cursor-pointer">
+            REQUEST BOARDING PASS
+          </button>
+        </form>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-white/[0.03] bg-[#090D16] select-none">
-    <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#64748B] font-semibold">
-      <div class="flex items-center gap-2">
-        <span class="font-display font-bold text-zinc-500">Dock<span class="text-zinc-650">Ops</span></span>
-        <span>&bull;</span>
-        <span>An open-source container project by shaw0p</span>
+  <footer class="border-t border-white/[0.03] bg-[#090D16] select-none py-10 font-mono text-[9px] text-[#64748B]">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="logo-icon w-6 h-6 rounded bg-[#0284C7]/5 border border-[#0284C7]/15 flex items-center justify-center text-[#0284C7] text-xs">
+          <i class="fa-solid fa-cube"></i>
+        </div>
+        <span class="logo-text text-xs font-bold text-white">Dock<span class="accent-blue">Ops</span></span>
+        <span class="mx-2">&bull;</span>
+        <span class="uppercase">MIT LICENSED</span>
       </div>
-      <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="hover:text-zinc-400 transition-colors">GitHub Repository</a>
+      
+      <div class="uppercase">
+        BUILT AT THE SHIPYARD &bull; NO AGENTS WERE DEPLOYED
+      </div>
+      
+      <div>
+        <a href="https://github.com/shaw0p/Dock0ps" target="_blank" class="hover:text-white transition-colors uppercase">GITHUB.COM/SHAW0P/DOCKOPS</a>
+      </div>
     </div>
   </footer>
 
