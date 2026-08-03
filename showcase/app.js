@@ -77,9 +77,14 @@ volumes:
   
   const nginxContainerBox = document.getElementById('nginx-container-box');
   const nginxContainerBadge = document.getElementById('nginx-container-badge');
+  const nginxFan = document.getElementById('nginx-fan');
+  const nginxLed = document.querySelector('#nginx-container-box .led-indicator');
+
   const postgresContainerBox = document.getElementById('postgres-container-box');
   const postgresContainerBadge = document.getElementById('postgres-container-badge');
-  
+  const postgresFan = document.getElementById('postgres-fan');
+  const postgresLed = document.querySelector('#postgres-container-box .led-indicator');
+
   const webhookToast = document.getElementById('webhook-toast');
   const webhookToastMessage = document.getElementById('webhook-toast-message');
   const webhookToastClose = document.getElementById('webhook-toast-close');
@@ -100,7 +105,7 @@ volumes:
     
     // Set status to deploying
     workbenchStatusText.textContent = 'Deploying Stack...';
-    workbenchStatusDot.className = 'w-2 h-2 rounded-full bg-[#EA580C] animate-pulse';
+    workbenchStatusDot.className = 'status-dot warning animate-pulse';
 
     function addNextLog() {
       if (index < logArray.length) {
@@ -112,7 +117,7 @@ volumes:
           p.innerHTML = `<span class="text-[#0284C7]">[DockOps]</span> ${text.replace('[DockOps]', '')}`;
         } else if (text.includes('Creating') || text.includes('done') || text.includes('ready') || text.includes('initialized')) {
           p.innerHTML = `<span class="text-[#059669]">${text}</span>`;
-        } else if (text.includes('Error') || text.includes('exited') || text.includes('alert')) {
+        } else if (text.includes('Error') || text.includes('exited') || text.includes('alert') || text.includes('Warning')) {
           p.innerHTML = `<span class="text-[#EA580C] font-bold">${text}</span>`;
         } else {
           p.textContent = text;
@@ -124,13 +129,13 @@ volumes:
       } else {
         clearInterval(logIntervalId);
         workbenchStatusText.textContent = 'Stack Deployed';
-        workbenchStatusDot.className = 'w-2 h-2 rounded-full bg-[#059669] animate-pulse';
+        workbenchStatusDot.className = 'status-dot healthy';
         if (onComplete) onComplete();
       }
     }
 
     addNextLog();
-    logIntervalId = setInterval(addNextLog, 400);
+    logIntervalId = setInterval(addNextLog, 300);
   }
 
   // -- Tab Selection Handler --
@@ -141,21 +146,21 @@ volumes:
     dismissToast();
 
     // Reset crash button state
-    btnCrashSim.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Inject Container Crash';
-    btnCrashSim.className = 'px-3.5 py-1.5 bg-[#EA580C]/20 hover:bg-[#EA580C]/35 border border-[#EA580C]/30 text-[#EA580C] rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center gap-1.5';
+    btnCrashSim.innerHTML = '<i class="fa-solid fa-burst"></i> Inject Container Crash';
+    btnCrashSim.className = 'control-btn btn-orange';
 
     const data = templates[key];
     if (!data) return;
 
     if (key === 'nginx') {
-      tabBtnNginx.className = 'px-4 py-3 text-[10px] font-mono font-bold tracking-wider transition-all border-r border-white/[0.04] flex items-center gap-2 cursor-pointer text-[#0284C7] bg-[#1E293B]';
-      tabBtnPostgres.className = 'px-4 py-3 text-[10px] font-mono font-bold tracking-wider transition-all border-r border-white/[0.04] flex items-center gap-2 cursor-pointer text-[#64748B] hover:text-[#94A3B8]';
+      tabBtnNginx.className = 'tab-button active';
+      tabBtnPostgres.className = 'tab-button';
       
       visualNginx.classList.remove('hidden');
       visualPostgres.classList.add('hidden');
     } else {
-      tabBtnPostgres.className = 'px-4 py-3 text-[10px] font-mono font-bold tracking-wider transition-all border-r border-white/[0.04] flex items-center gap-2 cursor-pointer text-[#0284C7] bg-[#1E293B]';
-      tabBtnNginx.className = 'px-4 py-3 text-[10px] font-mono font-bold tracking-wider transition-all border-r border-white/[0.04] flex items-center gap-2 cursor-pointer text-[#64748B] hover:text-[#94A3B8]';
+      tabBtnPostgres.className = 'tab-button active';
+      tabBtnNginx.className = 'tab-button';
       
       visualPostgres.classList.remove('hidden');
       visualNginx.classList.add('hidden');
@@ -170,7 +175,6 @@ volumes:
   // -- Deploy Button Simulation --
   if (btnDeploySim) {
     btnDeploySim.addEventListener('click', () => {
-      // Toggle button visual state
       btnDeploySim.disabled = true;
       btnDeploySim.innerHTML = '<i class="fa-solid fa-circle-notch animate-spin"></i> Deploying...';
       
@@ -178,21 +182,19 @@ volumes:
       resetContainerStates();
       dismissToast();
 
-      // Reset crash button
-      btnCrashSim.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Inject Container Crash';
-      btnCrashSim.className = 'px-3.5 py-1.5 bg-[#EA580C]/20 hover:bg-[#EA580C]/35 border border-[#EA580C]/30 text-[#EA580C] rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center gap-1.5';
+      btnCrashSim.innerHTML = '<i class="fa-solid fa-burst"></i> Inject Container Crash';
+      btnCrashSim.className = 'control-btn btn-orange';
 
       const data = templates[activeTabKey];
       runLogSimulation(data.logs, () => {
         btnDeploySim.disabled = false;
-        btnDeploySim.innerHTML = '<i class="fa-solid fa-rocket"></i> Deploy Compose Stack';
+        btnDeploySim.innerHTML = '<i class="fa-solid fa-play"></i> Deploy Compose Stack';
         
-        // Brief success flash
-        const originalBg = btnDeploySim.style.backgroundColor;
+        // Success pulse flash on button
         btnDeploySim.style.backgroundColor = '#059669';
         setTimeout(() => {
-          btnDeploySim.style.backgroundColor = originalBg;
-        }, 1200);
+          btnDeploySim.style.backgroundColor = '';
+        }, 1000);
       });
     });
   }
@@ -201,23 +203,26 @@ volumes:
   if (btnCrashSim) {
     btnCrashSim.addEventListener('click', () => {
       if (!isCrashed) {
-        // Trigger Crash State
         isCrashed = true;
         
-        // Update visual containers styles
+        // Trigger visual failures
         if (activeTabKey === 'nginx') {
-          nginxContainerBox.className = 'w-48 p-4 bg-[#0F172A] border-2 border-[#EA580C] rounded-2xl flex flex-col items-center gap-2 shadow-lg transform transition-all duration-500 scale-95';
-          nginxContainerBadge.className = 'text-[8px] font-mono text-[#EA580C] bg-[#EA580C]/10 border border-[#EA580C]/20 px-1.5 py-0.5 rounded font-bold uppercase';
-          nginxContainerBadge.textContent = 'CRASHED (Exit 137)';
+          nginxContainerBox.style.borderColor = '#EA580C';
+          nginxContainerBadge.className = 'badge-status offline uppercase font-mono';
+          nginxContainerBadge.textContent = 'CRASHED';
+          nginxLed.className = 'led-indicator error';
+          nginxFan.classList.remove('active');
         } else {
-          postgresContainerBox.className = 'w-44 p-4 bg-[#0F172A] border-2 border-[#EA580C] rounded-2xl flex flex-col items-center gap-2 shadow-lg transition-all duration-500 scale-95';
-          postgresContainerBadge.className = 'text-[8.5px] font-mono text-[#EA580C] bg-[#EA580C]/10 border border-[#EA580C]/20 px-1.5 py-0.5 rounded font-bold uppercase';
-          postgresContainerBadge.textContent = 'CRASHED (Exit 137)';
+          postgresContainerBox.style.borderColor = '#EA580C';
+          postgresContainerBadge.className = 'badge-status offline uppercase font-mono';
+          postgresContainerBadge.textContent = 'CRASHED';
+          postgresLed.className = 'led-indicator error';
+          postgresFan.classList.remove('active');
         }
 
-        // Output error logs
+        // Print failure logs
         const errorLogs = [
-          `[DockOps] Warning: Container status changed inside node daemon`,
+          `[DockOps] Warning: Container status changed inside daemon`,
           `[DockOps] Error: service "${activeTabKey === 'nginx' ? 'web' : 'db'}" exited unexpectedly with status code 137`,
           `[DockOps] Rules engine evaluation: Alert rule "High Resource Kill" matched`,
           `[DockOps] Dispatched Discord webhook payload to alerting endpoint...`
@@ -225,22 +230,23 @@ volumes:
         
         runLogSimulation(errorLogs, () => {
           workbenchStatusText.textContent = 'Status Warning';
-          workbenchStatusDot.className = 'w-2 h-2 rounded-full bg-[#EA580C] animate-pulse';
+          workbenchStatusDot.className = 'status-dot warning animate-pulse';
         });
 
-        // Show Toast popup
+        // Show webhook alert toast
         webhookToastMessage.textContent = `Alert: Container "${activeTabKey === 'nginx' ? 'nginx-web' : 'postgres-db'}" exited unexpectedly!`;
-        webhookToast.classList.remove('hidden');
+        webhookToast.style.display = 'block';
         setTimeout(() => {
           webhookToast.style.opacity = '1';
           webhookToast.style.transform = 'scale(1)';
-        }, 100);
+        }, 50);
 
-        // Change button to recover state
+        // Change button to recovery mode
         btnCrashSim.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Restart & Recover Container';
-        btnCrashSim.className = 'px-3.5 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center gap-1.5';
+        btnCrashSim.className = 'control-btn';
+        btnCrashSim.style.backgroundColor = '#059669';
+        btnCrashSim.style.color = '#fff';
       } else {
-        // Recover State
         isCrashed = false;
         resetContainerStates();
         dismissToast();
@@ -255,44 +261,46 @@ volumes:
 
         runLogSimulation(recoveryLogs, () => {
           workbenchStatusText.textContent = 'Stack Deployed';
-          workbenchStatusDot.className = 'w-2 h-2 rounded-full bg-[#059669] animate-pulse';
+          workbenchStatusDot.className = 'status-dot healthy';
         });
 
         // Reset crash button
-        btnCrashSim.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Inject Container Crash';
-        btnCrashSim.className = 'px-3.5 py-1.5 bg-[#EA580C]/20 hover:bg-[#EA580C]/35 border border-[#EA580C]/30 text-[#EA580C] rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center gap-1.5';
+        btnCrashSim.innerHTML = '<i class="fa-solid fa-burst"></i> Inject Container Crash';
+        btnCrashSim.className = 'control-btn btn-orange';
+        btnCrashSim.style.backgroundColor = '';
+        btnCrashSim.style.color = '';
       }
     });
   }
 
   // -- Helper functions --
   function resetContainerStates() {
-    nginxContainerBox.className = 'w-48 p-4 bg-[#0F172A] border-2 border-[#0284C7] rounded-2xl flex flex-col items-center gap-2 shadow-lg transform transition-all duration-500 scale-100';
-    nginxContainerBadge.className = 'text-[8px] font-mono text-[#059669] bg-[#059669]/10 border border-[#059669]/20 px-1.5 py-0.5 rounded font-bold uppercase';
+    nginxContainerBox.style.borderColor = '';
+    nginxContainerBadge.className = 'badge-status online uppercase font-mono';
     nginxContainerBadge.textContent = 'Active';
+    nginxLed.className = 'led-indicator active';
+    nginxFan.classList.add('active');
 
-    postgresContainerBox.className = 'w-44 p-4 bg-[#0F172A] border-2 border-[#0284C7] rounded-2xl flex flex-col items-center gap-2 shadow-lg transition-all duration-500 scale-100';
-    postgresContainerBadge.className = 'text-[8.5px] font-mono text-[#059669] bg-[#059669]/10 border border-[#059669]/20 px-1.5 py-0.5 rounded font-bold uppercase';
+    postgresContainerBox.style.borderColor = '';
+    postgresContainerBadge.className = 'badge-status online uppercase font-mono';
     postgresContainerBadge.textContent = 'Active';
+    postgresLed.className = 'led-indicator active';
+    postgresFan.classList.add('active');
   }
 
   function dismissToast() {
     webhookToast.style.opacity = '0';
     webhookToast.style.transform = 'scale(0.95)';
     setTimeout(() => {
-      webhookToast.classList.add('hidden');
-    }, 300);
+      webhookToast.style.display = 'none';
+    }, 200);
   }
 
   if (webhookToastClose) {
     webhookToastClose.addEventListener('click', dismissToast);
   }
 
-  // -- Tab switches listeners --
-  if (tabBtnNginx) tabBtnNginx.addEventListener('click', () => selectTab('nginx'));
-  if (tabBtnPostgres) tabBtnPostgres.addEventListener('click', () => selectTab('postgres'));
-
-  // Copy Snippet Handler
+  // Copy code handler
   if (copyBtn && codeSnippet) {
     copyBtn.addEventListener('click', () => {
       const text = codeSnippet.textContent.trim();
@@ -302,7 +310,7 @@ volumes:
           if (icon) {
             icon.className = 'fa-solid fa-check text-[#059669]';
             setTimeout(() => {
-              icon.className = 'fa-solid fa-copy text-[10px]';
+              icon.className = 'fa-solid fa-copy';
             }, 2000);
           }
         })
@@ -310,6 +318,6 @@ volumes:
     });
   }
 
-  // Initialize Nginx tab on load
+  // Initialize nginx tab
   selectTab('nginx');
 });
